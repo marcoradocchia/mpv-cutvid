@@ -16,12 +16,13 @@ The output video will be created in the same directory as original one.
 Two default (but editable) keymaps are provides two keymaps:
 * `Ctrl+t`: start/end video clip timestamp, which are saved in temporary file
   and passed to ffmpeg 
-* `Ctrl+p`: start trimming/merging clips (valid input only if paired start/stop
+* `Ctrl+p`: start trimming/merging clips (valid input only if paired start/end
   timestamps have been saved)
 
 ## Installation
-Makefile provided in order to install the the scripts:
+In order to install the the scripts run the following commands:
 ```sh
+git clone https://github.com/marcoradocchia/mpv-cutvid 
 sudo make USER=<user> install
 ```
 where `<user>` is a _placeholder_ for the user's name the script is intended to
@@ -38,3 +39,9 @@ where `<user>` is a _placeholder_ like above.
 This script makes use of ffmpeg to produce video output, on Arch Linux `ffmpeg`
 is an MPV dependency. On different distribution installing `ffmpeg` might be
 needed.
+
+The `ffmpeg-cut-merge` script needs `bc` to be installed. On Arch based distros
+install it with:
+```sh
+sudo pacman -S bc
+```

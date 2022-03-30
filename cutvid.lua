@@ -53,7 +53,7 @@ local function cutvid()
 	local video_path = string.format("%s/%s", mp.get_property("working-directory"), mp.get_property("path"))
 	-- if file exists then at least one section has been written to it
 	os.execute(string.format("/usr/local/bin/ffmpeg-cut-merge %s %s", tmp_file_path, video_path))
-	mp.osd_message(string.format("Output video at %s", video_path))
+	mp.osd_message("Video generated")
 end
 
 -- add mappings
