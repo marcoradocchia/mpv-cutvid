@@ -28,6 +28,6 @@ for line in $(cat $timestamps); do
 done
 
 ffmpeg -loglevel quiet -f concat -safe 0\
-  -i $PARTS_FILE -c copy $(basename $video | cut -d '.' -f 1)_cut.mkv
+  -i $PARTS_FILE -c copy $(date +"%Y-%m-%d_%H_%M_%S").mkv
 rm -rf $TMP_DIR
 rm $timestamps
