@@ -27,12 +27,14 @@ local function file_exists()
 end
 
 local function format_time()
-	local s = mp.get_property_number("time-pos")
-	local h = math.floor(s / 3600)
-	s = s - (h * 3600)
-	local m = math.floor(s / 60)
-	s = s - (m * 60)
-	return string.format("%02d:%02d:%02d", h, m, s)
+  local time_pos = mp.get_property_number("time-pos")
+  local time_seg = time_pos % 60
+  time_pos = time_pos - time_seg
+  local time_hours = math.floor(time_pos / 3600)
+  time_pos = time_pos - (time_hours * 3600)
+  local time_minutes = time_pos / 60
+  local time_sec,time_ms = string.format("%.03f", time_seg):match("([^.]*).(.*)")
+  return string.format("%02d:%02d:%02d.%s", time_hours, time_minutes, time_sec, time_ms)
 end
 
 local function get_stamps()
